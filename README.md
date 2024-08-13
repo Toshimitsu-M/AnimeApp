@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 # AnnictApp
 
 This template should help get you started developing with Vue 3 in Vite.
@@ -55,5 +54,3 @@ npm run lint
 
 # DB設計
 
-
->>>>>>> a066deee2a5f0eb0ea67cdf3f30f2b04a014f817
