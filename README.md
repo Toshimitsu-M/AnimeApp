@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # AnnictApp
 
 This template should help get you started developing with Vue 3 in Vite.
@@ -37,3 +38,22 @@ npm run build
 ```sh
 npm run lint
 ```
+=======
+# AnimeApp
+
+「見て評価したアニメ情報をプロットする」アプリ
+
+# 使用技術
+
+・　Java
+・　SpringBoot
+・　HTML（Thymeleaf）,CSS
+・　Tomcat
+
+# 機能一覧
+
+
+# DB設計
+
+
+>>>>>>> a066deee2a5f0eb0ea67cdf3f30f2b04a014f817
