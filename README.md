@@ -37,7 +37,7 @@ npm run build
 ```sh
 npm run lint
 ```
-=======
+
 # AnimeApp
 
 「見て評価したアニメ情報をプロットする」アプリ
