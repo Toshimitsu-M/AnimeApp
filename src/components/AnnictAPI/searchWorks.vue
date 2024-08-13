@@ -53,7 +53,7 @@ onMounted(async () => {
   // works.value = await fetchWorksData()
   // works.value = await result.result.result
 
-  if (works.value && works.value.searchWorks && works.value.searchWorks.edges) {
+  if (works.value && works.value.searchWorks && works?.value.searchWorks?.edges) {
     console.log(works.value.searchWorks.edges[0].node.title)
   } else {
     console.error('データが正しく取得できていないか、プロパティが未定義です')
