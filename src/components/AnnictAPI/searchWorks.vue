@@ -47,6 +47,17 @@ interface RootObject {
 // interface ResultDataObject {
 //   result: any
 // }
+console.log(result)
+console.log(loading)
+console.log(error)
+if (result.result.value && result.result.value.searchWorks) {
+  works.value = result.result.value as unknown as RootObject
+  console.log(works.value.searchWorks) 
+  console.log("タイトル: " + works.value.searchWorks?.edges[0].node.title) // "葬送のフリーレン"
+  console.log("視聴回数: " + works.value.searchWorks?.edges[0].node.watchersCount) // "視聴回数"
+
+}
+
 
 onMounted(async () => {
   // データの取得
@@ -60,16 +71,7 @@ onMounted(async () => {
   }
 })
 
-console.log(result)
-console.log(loading)
-console.log(error)
-if (result.result.value && result.result.value.searchWorks) {
-  works.value = result.result.value as unknown as RootObject
-  console.log(works.value.searchWorks) 
-  console.log("タイトル: " + works.value.searchWorks?.edges[0].node.title) // "葬送のフリーレン"
-  console.log("視聴回数: " + works.value.searchWorks?.edges[0].node.watchersCount) // "視聴回数"
 
-}
 </script>
 
 <template>
