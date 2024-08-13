@@ -1,0 +1,18 @@
+{
+  "files": [],
+  "references": [
+    {
+      "path": "./tsconfig.node.json"
+    },
+    {
+      "path": "./tsconfig.app.json"
+    }
+  ],
+  "compilerOptions": {
+    "allowSyntheticDefaultImports": true,
+    "allowJs": true,  // JavaScriptファイルのインポートを許可
+    "esModuleInterop": true,  // ESモジュールの互換性を有効にする
+    "moduleResolution": "node",  // Node.jsのモジュール解決を使用
+  },
+  "types": ["./apollo"]
+}
