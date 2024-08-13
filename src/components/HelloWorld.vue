@@ -1,3 +1,10 @@
+<script lang="ts">
+export default {
+  name: 'HelloWorld'
+  // その他のコンポーネントオプション
+}
+</script>
+
 <script setup lang="ts">
 defineProps<{
   msg: string
