@@ -10,6 +10,7 @@ import AnnictWorks from './AnnictAPI/searchWorks.vue'
 
 <template>
   <WelcomeItem>
+    
     <template #icon>
       <DocumentationIcon />
     </template>
