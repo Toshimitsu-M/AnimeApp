@@ -1,3 +1,10 @@
+<script lang="ts">
+export default {
+  name: 'TheWelcome'
+  // その他のコンポーネントオプション
+}
+</script>
+
 <script setup lang="ts">
 import WelcomeItem from './WelcomeItem.vue'
 import DocumentationIcon from './icons/IconDocumentation.vue'
@@ -5,7 +12,7 @@ import ToolingIcon from './icons/IconTooling.vue'
 import EcosystemIcon from './icons/IconEcosystem.vue'
 import CommunityIcon from './icons/IconCommunity.vue'
 import SupportIcon from './icons/IconSupport.vue'
-import AnnictWorks from './AnnictAPI/searchWorks.vue'
+import SearchWorks from './AnnictAPI/searchWorks.vue'
 </script>
 
 <template>
@@ -82,7 +89,7 @@ import AnnictWorks from './AnnictAPI/searchWorks.vue'
       <SupportIcon />
     </template>
     <template #heading>Annict</template>
-      <AnnictWorks />
+      <SearchWorks />
 
     いいね
     <a href="https://vuejs.org/sponsor/" target="_blank" rel="noopener">becoming a sponsor</a>.

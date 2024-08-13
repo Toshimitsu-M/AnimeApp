@@ -1,3 +1,10 @@
+<script lang="ts">
+export default {
+  name: 'SearchWorks'
+  // その他のコンポーネントオプション
+}
+</script>
+
 <script setup lang="ts">
 import { ref, onMounted } from 'vue'
 import result from '../../apollo'
