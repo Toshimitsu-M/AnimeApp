@@ -12,10 +12,13 @@ import ToolingIcon from './icons/IconTooling.vue'
 import EcosystemIcon from './icons/IconEcosystem.vue'
 import CommunityIcon from './icons/IconCommunity.vue'
 import SupportIcon from './icons/IconSupport.vue'
-import SearchWorks from './AnnictAPI/searchWorks.vue'
+import SearchWorks from './annictAPI/searchWorks.vue'
+import AnnictApi from './annictAPI/annictApi.vue'
+import CharactersList from './annictAPI/CharactersList.vue'
 </script>
 
 <template>
+  <CharactersList />
   <WelcomeItem>
     
     <template #icon>
@@ -85,6 +88,7 @@ import SearchWorks from './AnnictAPI/searchWorks.vue'
   </WelcomeItem>
 
   <WelcomeItem>
+    <AnnictApi />
     <template #icon>
       <SupportIcon />
     </template>
@@ -92,6 +96,7 @@ import SearchWorks from './AnnictAPI/searchWorks.vue'
       <SearchWorks />
 
     いいね
-    <a href="https://vuejs.org/sponsor/" target="_blank" rel="noopener">becoming a sponsor</a>.
+    <a href="https://vuejs.org/sponsor/" target="_blank" rel="noopener">becoming a sponsor</a>
+    
   </WelcomeItem>
 </template>
