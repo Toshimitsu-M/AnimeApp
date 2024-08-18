@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import HelloWorld from './components/HelloWorld.vue'
 import TheWelcome from './components/TheWelcome.vue'
+import CharactersList from './components/annictAPI/CharactersList.vue'
 
 </script>
 
@@ -11,10 +12,14 @@ import TheWelcome from './components/TheWelcome.vue'
     <div class="wrapper">
       <HelloWorld msg="You did it!!!!!!!" />
     </div>
+    
   </header>
 
+  <CharactersList />
+  
   <main>
-    <TheWelcome />
+    <CharactersList />
+    <!-- <TheWelcome /> -->
   </main>
 </template>
 
