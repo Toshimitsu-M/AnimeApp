@@ -1,10 +1,3 @@
-<script lang="ts">
-export default {
-  name: 'AnnictApi'
-  // その他のコンポーネントオプション
-}
-</script>
-
 <script setup lang="ts">
 import { ref, onMounted } from 'vue'
 // import {resultQuery} from '../../apollo'

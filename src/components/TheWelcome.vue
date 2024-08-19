@@ -1,10 +1,3 @@
-<script lang="ts">
-export default {
-  name: 'TheWelcome'
-  // その他のコンポーネントオプション
-}
-</script>
-
 <script setup lang="ts">
 import WelcomeItem from './WelcomeItem.vue'
 import DocumentationIcon from './icons/IconDocumentation.vue'
