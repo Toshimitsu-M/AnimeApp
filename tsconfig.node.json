@@ -8,7 +8,8 @@
     "playwright.config.*",
     "src/**/*.ts",
     "src/**/*.d.ts",
-    "src/**/*"
+    "src/**/*",
+    "src/**/*.vue"
   ],
   "compilerOptions": {
     "composite": true,

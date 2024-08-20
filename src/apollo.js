@@ -1,7 +1,4 @@
-import { ApolloClient, InMemoryCache } from '@apollo/client/core'
-import { HttpLink } from 'apollo-link-http';
-import VueApollo from 'vue-apollo';
-
+import { InMemoryCache, HttpLink, ApolloClient} from '@apollo/client/core'
 
 // GraphQL APIへの接続を確立
 const httpLink = new HttpLink({
@@ -21,6 +18,4 @@ export const apolloClient = new ApolloClient({
   connectToDevTools: true
 });
 
-export const apolloProvider = new VueApollo({
-  defaultClient: apolloClient
-});
+export default apolloClient;

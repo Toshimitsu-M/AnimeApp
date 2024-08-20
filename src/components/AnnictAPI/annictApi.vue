@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { ref, onMounted } from 'vue'
 // import {resultQuery} from '../../apollo'
-import { fetchItems } from '../../apollo'
+// import { fetchItems } from '../../apollo'
 // import { fetchWorksData } from './searchWorks'
 
 // const works = ref<RootObject | undefined>(undefined)
@@ -36,22 +36,7 @@ const works = ref<
 //   searchWorks: SearchWorks
 // }
 
-const result = ref()
-async function fetchAndLog() {
-  try {
-    const fetchItem = fetchItems() // Promise の解決を待つ
-    const item = Promise.resolve(fetchItem)
-    console.log(item)
-    const items = await fetchItems
-    // `RefImpl` 内の実際の値にアクセス
-    // const actualValue = items
-    // console.log(actualValue) // `RefImpl` 内のデータ
-    result.value = fetchItem.value
-  } catch (error) {
-    console.error('Error fetching data:', error)
-  }
-}
-fetchAndLog()
+// const result = ref()
 
 // result.then(result => {
 // //   console.log(result); // RefImpl の中の値が表示される
@@ -59,11 +44,11 @@ fetchAndLog()
 // console.log(result.value)
 // console.log(result.result.value)
 // works.value = result.result.value as unknown as RootObject
-if (works.value && works.value.searchWorks) {
-  console.log(works.value.searchWorks)
-  console.log('タイトル: ' + works.value.searchWorks?.edges[0].node.title) // "葬送のフリーレン"
-  console.log('視聴回数: ' + works.value.searchWorks?.edges[0].node.watchersCount) // "視聴回数"
-}
+// if (works.value && works.value.searchWorks) {
+//   console.log(works.value.searchWorks)
+//   console.log('タイトル: ' + works.value.searchWorks?.edges[0].node.title) // "葬送のフリーレン"
+//   console.log('視聴回数: ' + works.value.searchWorks?.edges[0].node.watchersCount) // "視聴回数"
+// }
 
 onMounted(async () => {
   // データの取得

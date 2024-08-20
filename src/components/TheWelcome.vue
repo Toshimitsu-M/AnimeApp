@@ -5,9 +5,9 @@ import ToolingIcon from './icons/IconTooling.vue'
 import EcosystemIcon from './icons/IconEcosystem.vue'
 import CommunityIcon from './icons/IconCommunity.vue'
 import SupportIcon from './icons/IconSupport.vue'
-import SearchWorks from './annictAPI/searchWorks.vue'
-import AnnictApi from './annictAPI/annictApi.vue'
-import CharactersList from './annictAPI/CharactersList.vue'
+import SearchWorks from './annictapi/SearchWorks.vue'
+import AnnictApi from './annictapi/AnnictApi.vue'
+import CharactersList from './annictapi/CharactersList.vue'
 </script>
 
 <template>

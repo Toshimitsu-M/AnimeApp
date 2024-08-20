@@ -1,9 +1,9 @@
 <script setup lang="ts">
 import { ref } from 'vue'
 
-import { useQuery, provideApolloClient } from '@vue/apollo-composable'
+import { useQuery } from '@vue/apollo-composable'
 import gql from 'graphql-tag'
-import apolloClient from '../../apollo.js'
+// import apolloClient from '../../apollo.js'
 
 const name = ref<string>()
 
@@ -17,7 +17,6 @@ type Query =
 
 const fetchdata = ref<Query>()
 
-provideApolloClient(apolloClient)
 
 const getSearchWorks = () => {
   console.log('getSearchWorks')
@@ -74,6 +73,6 @@ const annictQuery = () => {
         "
       />
     </form>
-    <pokemon-list v-if="fetchdata" :pokemons="fetchdata.pokemons" />
+    <pokemon-list v-if="fetchdata" :searchWorks="fetchdata.searchWorks" />
   </div>
 </template>
