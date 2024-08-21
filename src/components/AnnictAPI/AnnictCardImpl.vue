@@ -14,10 +14,17 @@
       </div>
     </div>
   </template>
+  <script lang="ts">
+  export default {
+    name: 'AnnictCardImpl'
+    // その他のコンポーネントオプション
+  }
+  </script>
+
   
-  <script setup>
+  <script setup lang=ts>
   import { ref } from 'vue';
-  import Card from './Card.vue';
+  import Card from './AnnictCard.vue';
   
   // カードデータを定義
   const cards = ref([
@@ -49,8 +56,8 @@
   ]);
   
   // ボタンクリック時の処理
-  function handleButtonClick(cardTitle) {
-    alert(`Button clicked on ${cardTitle}`);
+  function handleButtonClick(cardTitle:string) {
+    console.log(`Button clicked on ${cardTitle}`);
   }
   </script>
   

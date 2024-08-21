@@ -11,7 +11,7 @@ import CharactersList from './annictapi/CharactersList.vue'
 </script>
 
 <template>
-  <CharactersList />
+  
   <WelcomeItem>
     
     <template #icon>

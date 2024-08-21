@@ -2,6 +2,7 @@
 import HelloWorld from './components/HelloWorld.vue'
 import TheWelcome from './components/TheWelcome.vue'
 import CharactersList from './components/annictapi/CharactersList.vue'
+import AnnictCardImpl from './components/annictapi/AnnictCardImpl.vue'
 
 </script>
 
@@ -16,6 +17,7 @@ import CharactersList from './components/annictapi/CharactersList.vue'
   </header>
   
   <main>
+    <AnnictCardImpl />
     <!-- <CharactersList /> -->
     <TheWelcome />
   </main>
