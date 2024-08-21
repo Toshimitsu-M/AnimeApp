@@ -1,9 +1,7 @@
 <script setup lang="ts">
 import { ref } from 'vue'
-
 import { useQuery } from '@vue/apollo-composable'
 import gql from 'graphql-tag'
-// import apolloClient from '../../apollo.js'
 
 const name = ref<string>()
 
