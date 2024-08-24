@@ -6,13 +6,13 @@
       image="https://frieren-anime.jp/wp-content/themes/frieren_2023/assets/og/ogp6.jpg"
     ></Card> -->
     <div v-if="annictCards?.searchWorks && annictCards?.searchWorks?.edges.length > 0">
-    <Card
-      v-for="(card, index) in annictCards.searchWorks?.edges"
-      :key="index"
-      :title="card.node.title"
-      :image="card.node.image.facebookOgImageUrl"
-    />
-  </div>
+      <Card
+        v-for="(card, index) in annictCards.searchWorks?.edges"
+        :key="index"
+        :title="card.node.title"
+        :image="card.node.image.facebookOgImageUrl"
+      />
+    </div>
 
     <!-- <div class="card-container">
       <Card
@@ -32,7 +32,8 @@
 import { ref } from 'vue'
 import Card from './AnnictCard.vue'
 import { useQuery } from '@vue/apollo-composable'
-import gql from 'graphql-tag'
+// import gql from 'graphql-tag'
+import { gql } from '@apollo/client/core';
 
 type Query =
   | {
@@ -49,17 +50,17 @@ type Query =
     }
   | undefined
 
-  //Annictカードデータの定義
+//Annictカードデータの定義
 const annictCards = ref<Query>()
 
-const getSearchWorks = () => {
+const getSearchWorks = (season: string, first: number) => {
   console.log('getSearchWorks')
   const GET_WORKS = gql`
     query {
       searchWorks(
-        seasons: ["2024-summer"]
+        seasons: ["${season}"]
         orderBy: { field: WATCHERS_COUNT, direction: DESC }
-        first: 10
+        first: ${first}
       ) {
         edges {
           node {
@@ -75,21 +76,27 @@ const getSearchWorks = () => {
     }
   `
 
+  
   const { onResult } = useQuery<Query>(GET_WORKS, {
     fetchPolicy: 'network-only'
+    // variables: {
+    //   seasons: [season.value],
+    //   first: first.value
+    // }
   })
 
   onResult((result) => {
     annictCards.value = result.data
   })
 }
-getSearchWorks()
+
+const season = ref<string>("2024-summer")
+const first = ref<number>(1)
+getSearchWorks(season.value,first.value)
 
 const annictQuery = () => {
-  getSearchWorks()
+  // getSearchWorks()
 }
-
-
 
 // カードデータを定義
 const cards = ref([
