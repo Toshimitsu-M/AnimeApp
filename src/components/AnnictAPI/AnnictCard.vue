@@ -2,7 +2,7 @@
   <div class="card">
     <img :src="image" alt="Card image" class="card-image" />
     <div class="card-content">
-      <h3 class="card-title">{{ title }}</h3>
+      <p class="card-title">{{ title }}</p>
       <!-- <p class="card-description">{{ description }}</p> -->
       <button @click="handleButtonClick" class="card-button">{{ buttonText }}</button>
     </div>
@@ -10,8 +10,6 @@
 </template>
 
 <script setup lang=ts>
-import { defineProps, defineEmits } from 'vue'
-
 const props = defineProps({
   title: String,
   image: String,
@@ -31,7 +29,7 @@ function handleButtonClick() {
 <style scoped>
 .card {
   border: 1px solid #ddd;
-  border-radius: 70px;
+  border-radius: 40px;
   overflow: hidden;
   max-width: 300px;
   margin: 16px;
@@ -41,10 +39,10 @@ function handleButtonClick() {
   height: auto;
 }
 .card-content {
-  padding: 16px;
+  padding: 7px;
 }
 .card-title {
-  font-size: 1.5em;
+  font-size: 0.6em;
   margin: 0;
 }
 .card-description {
@@ -55,8 +53,9 @@ function handleButtonClick() {
   color: white;
   border: none;
   border-radius: 4px;
-  padding: 10px;
   cursor: pointer;
+  font-size:8px;
+  padding:6px;
 }
 .card-button:hover {
   background-color: #0056b3;
