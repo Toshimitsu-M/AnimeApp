@@ -5,15 +5,20 @@ import ToolingIcon from './icons/IconTooling.vue'
 import EcosystemIcon from './icons/IconEcosystem.vue'
 import CommunityIcon from './icons/IconCommunity.vue'
 import SupportIcon from './icons/IconSupport.vue'
-import SearchWorks from './annictapi/SearchWorks.vue'
 import AnnictApi from './annictapi/AnnictApi.vue'
 import CharactersList from './annictapi/CharactersList.vue'
 </script>
 
 <template>
-  
   <WelcomeItem>
-    
+    <template #icon>
+      <SupportIcon />
+    </template>
+    <!-- <template #heading>Annict</template> -->
+    <AnnictApi />
+  </WelcomeItem>
+
+  <!-- <WelcomeItem>
     <template #icon>
       <DocumentationIcon />
     </template>
@@ -78,18 +83,5 @@ import CharactersList from './annictapi/CharactersList.vue'
     the official
     <a href="https://twitter.com/vuejs" target="_blank" rel="noopener">@vuejs</a>
     twitter account for latest news in the Vue world.
-  </WelcomeItem>
-
-  <WelcomeItem>
-    <AnnictApi />
-    <template #icon>
-      <SupportIcon />
-    </template>
-    <template #heading>Annict</template>
-      <SearchWorks />
-
-    いいね
-    <a href="https://vuejs.org/sponsor/" target="_blank" rel="noopener">becoming a sponsor</a>
-    
-  </WelcomeItem>
+  </WelcomeItem> -->
 </template>

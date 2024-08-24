@@ -1,10 +1,3 @@
-<script lang="ts">
-export default {
-  name: 'CharactersList'
-  // その他のコンポーネントオプション
-}
-</script>
-
 <script setup lang="ts">
 import { ref, onMounted } from 'vue'
 
