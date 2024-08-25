@@ -7,7 +7,7 @@ export function parseDate(input: string): string {
   // 年の計算
   const beforeYearMatch = input.match(/(\d+)年前/);
   const afterYearMatch = input.match(/(\d+)年後/);
-  const nextYearMatch = input.match(/来期/);
+  const nextYearMatch = input.match(/来年/);
   if (beforeYearMatch) {
       year -= parseInt(beforeYearMatch[1], 10);
   } else if (afterYearMatch) {
