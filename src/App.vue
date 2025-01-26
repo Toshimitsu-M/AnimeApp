@@ -3,6 +3,7 @@ import HelloWorld from './components/HelloWorld.vue'
 import TheWelcome from './components/TheWelcome.vue'
 import CharactersList from './components/annictapi/CharactersList.vue'
 import AnnictCardImpl from './components/annictapi/AnnictCardImpl.vue'
+import DragCard from './components/DragCard.vue'
 import { ref } from 'vue'
 
 // 検索バーの入力値を保持するためのref
@@ -38,6 +39,11 @@ const performSearch = () => {
   <AnnictCardImpl :key="componentKey" :searchKey="searchItems" />
   <!-- <CharactersList /> -->
   <!-- <TheWelcome /> -->
+  <br>
+  <br>
+  <br>
+  <br><br><br><br><br><br><br><br>
+  <DragCard />
 </template>
 
 <style scoped>
