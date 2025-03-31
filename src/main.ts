@@ -4,6 +4,7 @@ import './assets/tailwind.css';
 
 import { createApp,h,provide } from 'vue'
 import App from './App.vue'
+// @ts-ignore
 import router from './router';
 import { createPinia } from 'pinia';
 import apolloClient from './apollo.js'

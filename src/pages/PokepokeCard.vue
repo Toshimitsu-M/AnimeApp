@@ -1,4 +1,4 @@
-<script setup lang="ts">
+<script >
 import DragCard from '../components/DragCard.vue'
 
 </script>

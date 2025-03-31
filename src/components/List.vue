@@ -51,7 +51,6 @@ const lists = reactive([
   <ul class="text-gray-700">
     <li class="mb-1" v-for="list in lists" :key="list.name">
         <router-link
-            v-if="!list.sublists"
             :to="list.link"
             class="
                 flex
