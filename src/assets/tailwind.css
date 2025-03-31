@@ -1,0 +1,4 @@
+/* src/assets/tailwind.css または src/index.css */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;

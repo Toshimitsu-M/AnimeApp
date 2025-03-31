@@ -1,16 +1,16 @@
 <template>
-  キャラクター一覧の情報が表示されます。
+  アニメ作品一覧の情報が表示されます。
   <div id="app" class="p-6 flex flex-col items-center">
     <div v-if="loading" class="text-center text-gray-500">Loading...</div>
     <div
-      v-else-if="annictCards?.Page.characters.length"
+      v-else-if="annictCards?.Page.media.length"
       class="grid grid-cols-[repeat(auto-fill,minmax(200px,1fr))] gap-4 justify-items-center w-full max-w-screen-lg mx-auto"
     >
       <Card
-        v-for="(anime, index) in annictCards?.Page.characters"
+        v-for="(anime, index) in annictCards?.Page.media"
         :key="index"
-        :title="anime.name.native"
-        :image="anime.image.large || 'no_image_yoko.jpg'"
+        :title="anime.title.native"
+        :image="anime.coverImage.large || 'no_image_yoko.jpg'"
         :number="index"
       />
     </div>
@@ -18,7 +18,7 @@
   </div>
 </template>
 <script setup lang="ts">
-import { watchEffect } from 'vue'
+import { watch, watchEffect } from 'vue'
 import Card from './AnnictCard.vue'
 import { useQuery } from '@vue/apollo-composable'
 import { gql } from '@apollo/client/core'
@@ -32,50 +32,32 @@ const { searchKey } = storeToRefs(store)
 type Query =
   | {
       Page: {
-        characters: characters[]
+        media: Anime[]
       }
     }
   | undefined
 
-type characters = {
+type Anime = {
   id: number
-  name: {
-    full: string
+  title: {
     native: string
   }
-  image: {
+  coverImage: {
     large: string
-  }
-  media: {
-    id: string
-    title: {
-      native: string
-    }
   }
 }
 
 // アニメ一覧クエリの定義
 const GET_WORKS = gql`
   query ($search: String) {
-    Page(page: 1, perPage: 5) {
-      characters(search: $search, sort: [FAVOURITES_DESC]) {
+    Page(page: 1, perPage: 50) {
+      media(search: $search, type: ANIME, sort: [POPULARITY_DESC]) {
         id
-        name {
-          full
+        title {
           native
         }
-        image {
+        coverImage {
           large
-        }
-        media {
-          edges {
-            node {
-              id
-              title {
-                native
-              }
-            }
-          }
         }
       }
     }
@@ -92,6 +74,7 @@ const {
     search: searchKey.value || '' // 初回で `undefined` にならないように空文字
   },
   fetchPolicy: 'network-only'
+//   fetchPolicy: 'cache-first'
 })
 
 // 検索ワードが変わったらクエリを再実行
@@ -100,14 +83,14 @@ watchEffect(() => {
   console.log(searchKey.value)
 
   // データが取得できたらストアに保存
-  if (annictCards.value?.Page?.characters) {
+  if (annictCards.value?.Page?.media) {
     console.log(annictCards.value)
     store.setAnimeList(
-      annictCards.value?.Page?.characters.map((anime) => ({
-        title: anime.name.native,
+      annictCards.value?.Page?.media.map((anime) => ({
+        title: anime.title.native,
         watchersCount: 0,
         seasonYear: '',
-        image: { facebookOgImageUrl: anime.image.large || '' }
+        image: { facebookOgImageUrl: anime.coverImage.large || '' }
       }))
     )
   }

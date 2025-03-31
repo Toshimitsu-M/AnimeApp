@@ -1,64 +1,40 @@
 <template>
-  <div class="card">
-    <img :src="image" alt="Card image" class="card-image" />
-    <div class="card-content">
-      <p class="card-title">{{ title }}</p>
-      <!-- <p class="card-description">{{ description }}</p> -->
-      <button @click="handleButtonClick" class="card-button">{{ buttonText }}</button>
+  <router-link :to="router.link" class="relative max-w-xs rounded-3xl overflow-hidden border border-gray-300 shadow-lg m-4" @click="handleClick">
+    <span class="absolute top-[92px] left-[0px] bg-orange-700/80 text-white text-lg font-bold px-3 py-1 rounded-full">{{ number+1 }}</span>
+    <img :src="image" alt="Card image" class="w-full" />
+    <div class="p-4">
+      <p class="text-xs font-semibold text-gray-800 mt-4 text-center">{{ title }}</p>
     </div>
-  </div>
+  </router-link>
 </template>
 
-<script setup lang=ts>
-const props = defineProps({
-  title: String,
-  image: String,
-  buttonText: {
-    type: String,
-    default: 'Learn More'
+<script setup lang="ts">
+import { reactive } from 'vue';
+import { useAnimeStore } from '../../store/animeStore';
+
+const store = useAnimeStore();
+
+const router = reactive(
+  {
+    name: 'アニメ詳細',
+    link: '/popularAnime/animeDetail',
+
   }
-})
+);
 
-const emit = defineEmits(['button-click'])
+const props = defineProps<{ 
+  title: string;
+  image: string;
+  number: number;
+}>();
 
-function handleButtonClick() {
-  emit('button-click')
-}
+const handleClick = () => {
+  console.log(props.title)
+  store.setSelectedAnime({
+    title: props.title,
+    watchersCount: 0,  // 値がないので仮のデータ
+    seasonYear: "",
+    image: { facebookOgImageUrl: props.image },
+  });
+};
 </script>
-
-<style scoped>
-.card {
-  border: 1px solid #ddd;
-  border-radius: 40px;
-  overflow: hidden;
-  max-width: 300px;
-  margin: 16px;
-}
-.card-image {
-  width: 100%;
-  height: auto;
-}
-.card-content {
-  padding: 7px;
-}
-.card-title {
-  font-size: 0.6em;
-  margin: 0;
-}
-.card-description {
-  margin: 16px 0;
-}
-.card-button {
-  background-color: #007bff;
-  color: white;
-  border: none;
-  border-radius: 4px;
-  cursor: pointer;
-  font-size:8px;
-  padding:6px;
-}
-.card-button:hover {
-  background-color: #0056b3;
-}
-</style>
-
