@@ -22,9 +22,12 @@
 
 <script setup lang="ts">
 import { ref } from 'vue'
+// @ts-ignore
 import Sidebar from '../components/Sidebar.vue'
 
+// @ts-ignore
 const showButton = import.meta.env.VITE_SHOW_BUTTON === 'true';
 
+// @ts-ignore
 const show = ref(import.meta.env.VITE_SHOW_BUTTON === 'true')
 </script>

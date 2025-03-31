@@ -9,21 +9,22 @@
     <!-- キャラクター情報 -->
     <div class="flex flex-col items-center mx-auto">
       <!-- キャラクター画像 -->
-      <img :src="character.image" class="w-40 h-40 object-cover rounded-lg shadow-md mb-4" />
+      <img :src="character?.image" class="w-40 h-40 object-cover rounded-lg shadow-md mb-4" />
 
       <!-- キャラクター名 -->
       <h2 class="text-lg font-semibold">
-        {{ character.name }}&nbsp;&nbsp;&nbsp;CV: {{ character.voiceActors }}
+        {{ character?.name }}&nbsp;&nbsp;&nbsp;CV: {{ character?.voiceActors }}
       </h2>
 
       <!-- 声優画像 -->
       <img
-        :src="character.voiceActorsImage"
+        :src="character?.voiceActorsImage"
         class="w-20 h-20 object-cover rounded-full shadow-md mt-2"
       />
 
       <!-- お気に入りボタン -->
       <button
+        v-if="character"
         @click="toggleFavorite"
         :class="favorites.includes(character.name) ? 'bg-red-500' : 'bg-blue-500'"
         class="p-2 text-white rounded-lg mt-4 w-40 shadow-md"
@@ -162,7 +163,7 @@ const toggleFavorite = () => {
 }
 
 //コメント追加
-const addHandleEnter = (event) => {
+const addHandleEnter = () => {
   if (!addIsComposing.value) {
     addComment()
   }
@@ -246,14 +247,17 @@ const deleteComment = async (id: number) => {
 }
 
 // コメントの変更を監視してローカルストレージに保存
-const COMMENT_STORAGE_KEY = "cachedComment";
-watch(comment, (newValue) => {
-  localStorage.setItem(COMMENT_STORAGE_KEY, newValue);
-});
+// const COMMENT_STORAGE_KEY = "cachedComment";
+// watch(comment, (newValue) => {
+//   localStorage.setItem(COMMENT_STORAGE_KEY, newValue);
+// });
 
 // Shift + Enter で改行
-const addNewline = (event) => {
-  event.target.value += '\n'
+const addNewline = (event: Event) => {
+  if (event.target) {
+    // @ts-ignore
+    event.target.value += '\n' 
+  }
 }
 
 const showMenu = ref<number | null>(null)
@@ -263,17 +267,20 @@ const toggleMenu = (index: number) => {
 }
 
 // メニューをクリック以外で閉じる
-const closeMenu = (event) => {
+const closeMenu = (event: Event) => {
+  // @ts-ignore
   if (!event.target.closest('.menu-container')) {
     showMenu.value = null
   }
 }
 
 onMounted(() => {
+  // @ts-ignore
   document.addEventListener('click', closeMenu)
 })
 
 onBeforeUnmount(() => {
+  // @ts-ignore
   document.removeEventListener('click', closeMenu)
 })
 

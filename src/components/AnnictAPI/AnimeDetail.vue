@@ -15,6 +15,7 @@
       <Card
         v-for="(character, index) in animeDetail?.Media?.characters?.edges"
         :key="index"
+        :id="character.node.name.native"
         :name="character.node.name.native"
         :image="character.node.image.large || 'no_image_yoko.jpg'"
         :voiceActors="character.voiceActors[0]?.name?.native || '不明'"
@@ -30,6 +31,7 @@
 import { computed, watchEffect } from 'vue';
 import { useRouter } from 'vue-router';
 import { useAnimeStore } from '../../store/animeStore';
+// @ts-ignore
 import Card from './CharacterCard.vue'
 import { useQuery } from '@vue/apollo-composable'
 import { gql } from '@apollo/client/core'
