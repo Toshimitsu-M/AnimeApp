@@ -5,6 +5,8 @@ import { ref } from 'vue'
 </script>
 
 <template>
-  <Default><router-view></router-view></Default>
+      <Default><router-view></router-view></Default>
+      
+  
 </template>
 

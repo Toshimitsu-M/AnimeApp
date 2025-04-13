@@ -3,5 +3,6 @@ import AnimeList from '../components/anime/AnimeList.vue'
 
 </script>
 <template>
-  <AnimeList />
+  準備中...
+  <!-- <AnimeList /> -->
 </template>
