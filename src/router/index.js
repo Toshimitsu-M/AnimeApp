@@ -1,4 +1,4 @@
-import { createRouter, createWebHistory } from 'vue-router';
+import { createRouter, createWebHashHistory } from 'vue-router';
 import AnimeHome from '../pages/AnimeHome.vue';
 import PokepokeCard from '../pages/PokepokeCard.vue';
 import MarkItDown from '../pages/MarkItDown.vue';
@@ -60,7 +60,8 @@ const routes = [
 ];
 
 const router = createRouter({
-  history: createWebHistory(),
+  // history: createWebHistory(),
+  history: createWebHashHistory(import.meta.env.BASE_URL),
   routes,
 });
 

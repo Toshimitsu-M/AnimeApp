@@ -9,8 +9,8 @@
       <Card
         v-for="(anime, index) in annictCards?.Page.characters"
         :key="index"
-        :title="anime.name.native"
-        :image="anime.image.large || 'no_image_yoko.jpg'"
+        :title="anime.name?.native"
+        :image="anime.image?.large || 'no_image_yoko.jpg'"
         :number="index"
       />
     </div>

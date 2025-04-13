@@ -9,7 +9,7 @@
                   v-for="(anime, index) in annictCards?.searchWorks.edges"
                   :key="index"
                   :title="anime.node.title"
-                  :image="anime.node.image.facebookOgImageUrl || 'no_image_yoko.jpg'"
+                  :image="anime.node.image?.facebookOgImageUrl || 'no_image_yoko.jpg'"
                   :number="index"
                 />
               </div>
