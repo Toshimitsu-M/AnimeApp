@@ -1,5 +1,6 @@
 <template>
   <div class="p-4">
+    
     <div class="flex items-center justify-between font-bold text-lg text-blue-600">
       <div>UI Labo。</div>
       <div>

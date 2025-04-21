@@ -37,11 +37,11 @@ const lists = reactive([
     icon: 'ClipboardDocumentCheckIcon',
     link: '/corkBoard',
   },
-  {
-    name: 'アニメリスト',
-    icon: 'ClipboardDocumentCheckIcon',
-    link: '/animeList',
-  }
+  // {
+  //   name: 'アニメリスト',
+  //   icon: 'ClipboardDocumentCheckIcon',
+  //   link: '/animeList',
+  // }
 ]);
 
 
