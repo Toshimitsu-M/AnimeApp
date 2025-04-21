@@ -17,6 +17,7 @@ const app = createApp({
     render: () => h(App),
   });
 
+
 app.use(router) // Vue Router を適用
 app.use(createPinia()); // Pinia を登録
 app.mount('#app')

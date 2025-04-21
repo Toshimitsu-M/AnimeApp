@@ -59,11 +59,11 @@
 
 <script setup lang="ts">
 import { ref, watch, watchEffect } from 'vue'
-import CurrentAnime from '../components/annictapi/CurrentAnime.vue'
-import NextAnime from '../components/annictapi/NextAnime.vue'
-import SeasonalAnime from '../components/annictapi/SeasonalAnime.vue'
-import AnimeList from '../components/annictapi/AnimeList.vue'
-import CharactersList from '../components/annictapi/CharactersList.vue'
+import CurrentAnime from '../components/AnnictAPI/CurrentAnime.vue'
+import NextAnime from '../components/AnnictAPI/NextAnime.vue'
+import SeasonalAnime from '../components/AnnictAPI/SeasonalAnime.vue'
+import AnimeList from '../components/AnnictAPI/AnimeList.vue'
+import CharactersList from '../components/AnnictAPI/CharactersList.vue'
 import { useAnimeStore } from '../store/animeStore' // ストアをインポート
 
 // 検索バーの入力値を保持するためのref

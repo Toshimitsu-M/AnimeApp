@@ -99,7 +99,7 @@
 
     <!-- コメント入力エリア -->
     <div
-      class="sticky bottom-8 md:w-1/2 max-w-4xl left-1/2 border bg-gray-100 rounded-3xl -translate-x-1/2 p-4 flex justify-center items-center gap-2 mt-100"
+      class="sticky bottom-8 sm:w-2/3 md:w-1/2 max-w-4xl border bg-gray-100 rounded-3xl sm:-translate-x-[-33%] md:-translate-x-[-50%] p-4 flex justify-center items-center gap-2 mt-100"
     >
       <textarea
         v-model="comment"
