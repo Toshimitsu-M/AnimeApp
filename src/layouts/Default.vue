@@ -1,20 +1,24 @@
 <template>
-  <div class="relative flex">
+  <div class="relative">
     <!-- ヘッダー -->
-     
-    <Header class=fixed />
+    <!-- //Header.vueのボタンを押下したらサイドバーを開く -->
+    <Header
+      class="fixed w-full top-0 p-2 z-21 bg-white"
+      :show="show"
+      @update:show="show = $event"
+    />
 
     <!-- サイドバー -->
     <div
       v-if="showButton"
-      class="fixed w-64 top-12 h-screen bg-white z-20 transform transition-transform duration-300"
-      :class="{ '-translate-x-4/5': !show }"
+      class="left-0 fixed w-40 top-1 h-screen bg-white z-20 transform transition-transform duration-300"
+      :class="{ '-translate-x-[100%]': !show }"
     >
-      <Sidebar :show="show" @update:show="show = $event" />
+      <Sidebar />
     </div>
 
     <!-- メインコンテンツ -->
-    <div class="flex-1 pl-20 top-12 bg-gray-100 h-screen overflow-auto transition-all duration-300" 
+    <div class="flex-1 pt-10 bg-gray-100 h-screen overflow-auto transition-all duration-300" 
     :class="{ 'pl-64': show, 'pl-0': !show }"
     >
       <div>

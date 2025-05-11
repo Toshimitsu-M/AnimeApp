@@ -1,7 +1,8 @@
 <template>
-  <div class="flex flex-col items-center justify-center min-h-screen">
-    <button class="bg-blue-500 text-white px-6 py-2 rounded hover:bg-blue-600" @click="handleLogin">
-      Googleでログイン
+  <div>
+  <!-- <div class="flex flex-col items-center justify-center min-h-screen"> -->
+    <button class="text-blue-500 text-sm cursor-pointer" @click="handleLogin">
+      Sign Up
     </button>
 
     <div v-if="user" class="mt-4 text-center">

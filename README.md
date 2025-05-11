@@ -1,56 +1,53 @@
-# AnnictApp
+# frontend-vue
 
-This template should help get you started developing with Vue 3 in Vite.
+このリポジトリは、Vue 3 + Vite を使用したフロントエンド開発用のテンプレートです。  
+主にアニメ情報管理アプリなどを含む「UI Labo。」のフロントエンドとして使用されています。
 
-## Recommended IDE Setup
+## 前提環境（推奨）
 
-[VSCode](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and disable Vetur).
+- [Visual Studio Code](https://code.visualstudio.com/)
+- 拡張機能: [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar)  
+  ※ Vetur は無効化してください。
 
-## Type Support for `.vue` Imports in TS
+## プロジェクトのセットアップ
 
-TypeScript cannot handle type information for `.vue` imports by default, so we replace the `tsc` CLI with `vue-tsc` for type checking. In editors, we need [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) to make the TypeScript language service aware of `.vue` types.
+依存関係をインストールします。
 
-## Customize configuration
-
-See [Vite Configuration Reference](https://vitejs.dev/config/).
-
-## Project Setup
-
-```sh
+```bash
 npm install
-```
+````
 
-### Compile and Hot-Reload for Development
+## 開発サーバーの起動（ホットリロード対応）
 
-```sh
+```bash
 npm run dev
 ```
 
-### Type-Check, Compile and Minify for Production
+## 型チェック & 本番用ビルド（圧縮あり）
 
-```sh
+```bash
 npm run build
 ```
 
-### Lint with [ESLint](https://eslint.org/)
+## Lint チェック（[ESLint](https://eslint.org/) 使用）
 
-```sh
+```bash
 npm run lint
 ```
 
-# AnimeApp
+## `.vue` ファイルの型サポート（TypeScript）
 
-「見て評価したアニメ情報をプロットする」アプリ
+TypeScript は `.vue` ファイルの型を標準では理解できません。
+そのため `tsc` の代わりに `vue-tsc` を使い、Volar 拡張機能を有効にする必要があります。
 
-# 使用技術
+## その他の設定カスタマイズ
 
-・　Java
-・　SpringBoot
-・　HTML（Thymeleaf）,CSS
-・　Tomcat
+[Vite 設定ガイド（公式）](https://vitejs.dev/config/) を参考にしてください。
 
-# 機能一覧
+---
 
+## 補足
 
-# DB設計
+このプロジェクトは、「つくって試して、育てていくラボ的ポートフォリオ」の一環です。
+本リポジトリでは、主にフロントエンドの技術スタック（Vue 3, Vite, TypeScript）の検証・適用を行っています。
 
