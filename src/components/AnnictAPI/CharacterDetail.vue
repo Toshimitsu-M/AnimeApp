@@ -371,4 +371,5 @@ const fetchCommentDelete = (id: number) => {
 onMounted(async () => {
   await fetchCommentList() // fetchCommentListの非同期処理が完了するまで待機
 })
+
 </script>
