@@ -3,6 +3,7 @@ import AnimeHome from '../pages/AnimeHome.vue';
 import PokepokeCard from '../pages/PokepokeCard.vue';
 import MarkItDown from '../pages/MarkItDown.vue';
 import CorkBoard from '../pages/CorkBoard.vue';
+import CharacterChat from '../pages/CharacterChat.vue';
 import AnimeList from '../pages/AnimeList.vue';
 import AnimeDetail from '../components/annictapi/AnimeDetail.vue';
 import CharacterDetail from '../components/annictapi/CharacterDetail.vue';
@@ -38,6 +39,12 @@ const routes = [
     path: '/corkBoard',
     name: 'CorkBoard',
     component: CorkBoard,
+  },
+  {
+    // AIチャット CharacterChat
+    path: '/characterChat',
+    name: 'CharacterChat',
+    component: CharacterChat,
   },
   {
     // アニメリスト AnimeList

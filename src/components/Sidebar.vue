@@ -13,6 +13,5 @@
 
 <script setup lang="ts">
 import List from './List.vue';
-import { ref, watch } from 'vue';
 
 </script>

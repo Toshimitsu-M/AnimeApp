@@ -42,7 +42,7 @@
           class="p-3 flex items-center gap-2"
         >
           <UserCircleIcon class="w-6 h-6"></UserCircleIcon>
-          <span v-if="editingIndex !== c.id">{{ c.comment }}</span>
+          <span v-if="editingIndex !== c.id">{{ c.commentText }}</span>
           <textarea
             v-else
             v-model="editComment"
@@ -66,7 +66,7 @@
             >
               <button
                 v-if="editingIndex !== c.id"
-                @click="editCommentStart(c.id, c.comment)"
+                @click="editCommentStart(c.id, c.commentText)"
                 class="block w-full px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
               >
                 編集
@@ -143,6 +143,7 @@ const comment = ref('')
 const favorites = ref<string[]>([])
 const addIsComposing = ref(true)
 const editIsComposing = ref(false)
+const baseUrl = import.meta.env.VITE_API_BASE_URL;
 
 // キャラクター詳細情報の取得
 const store = useCharacterStore()
@@ -173,12 +174,12 @@ const addComment = async () => {
   if (comment.value.trim()) {
     try {
       //コメントシーケンス取得
-      await fetchCommentSequence()
+      // await fetchCommentSequence()
 
       // sequence.value が正しく取得されているか確認
-      if (!sequence.value) {
-        throw new Error('シーケンスの取得に失敗しました')
-      }
+      // if (!sequence.value) {
+      //   throw new Error('シーケンスの取得に失敗しました')
+      // }
       await fetchCommentSave(sequence.value as number, comment.value) //コメント編集保存API
 
       // コメントリストに新しいコメントを追加
@@ -288,7 +289,7 @@ type characterComment = {
   id: number
   anilistId: string
   userId: string
-  comment: string
+  commentText: string
 }
 const characterCommentList = ref<characterComment[]>([])
 
@@ -302,7 +303,7 @@ const fetchCommentList = () => {
       id = character.value?.name as string
     }
     axios
-      .get<characterComment[]>(`http://localhost:8080/characterComment/all/${id}`)
+      .get<characterComment[]>(`${baseUrl}/characterComment/all/${id}`)
       .then((response) => {
         console.log('レスポンスコメントリスト：', response.data)
         characterCommentList.value = response.data
@@ -318,7 +319,7 @@ const fetchCommentList = () => {
 const sequence = ref<number | null>(null)
 const fetchCommentSequence = () => {
   axios
-    .get<number>(`http://localhost:8080/characterComment/next-sequence`)
+    .get<number>(`${baseUrl}/characterComment/next-sequence`)
     .then((response) => {
       // レスポンスが成功した場合にシーケンスの値を設定
       sequence.value = response.data
@@ -345,7 +346,7 @@ const fetchCommentSave = (id: number, text: string) => {
   }
   try {
     axios
-      .post<string>('http://localhost:8080/characterComment/process', commentData)
+      .post<string>(`${baseUrl}/characterComment/process`, commentData)
       .then((response) => {
         console.log(response.data)
         saveResult.value = response.data
@@ -359,7 +360,7 @@ const fetchCommentSave = (id: number, text: string) => {
 const deleteResult = ref<string>()
 const fetchCommentDelete = (id: number) => {
   try {
-    axios.delete<string>(`http://localhost:8080/characterComment/delete/${id}`).then((response) => {
+    axios.delete<string>(`${baseUrl}/characterComment/delete/${id}`).then((response) => {
       deleteResult.value = response.data
     })
   } catch (error) {

@@ -16,7 +16,7 @@ const lists = reactive([
     name: 'ホーム',
     icon: 'ClipboardDocumentCheckIcon',
     link: '/',
-  },  
+  },
   {
     name: 'アニメホーム',
     icon: 'ClipboardDocumentCheckIcon',
@@ -37,6 +37,11 @@ const lists = reactive([
     icon: 'ClipboardDocumentCheckIcon',
     link: '/corkBoard',
   },
+  {
+    name: 'AIチャット',
+    icon: 'ClipboardDocumentCheckIcon',
+    link: '/characterChat',
+  },
   // {
   //   name: 'アニメリスト',
   //   icon: 'ClipboardDocumentCheckIcon',
@@ -50,9 +55,7 @@ const lists = reactive([
 <template>
   <ul class="text-gray-700">
     <li class="mb-1" v-for="list in lists" :key="list.name">
-        <router-link
-            :to="list.link"
-            class="
+      <router-link :to="list.link" class="
                 flex
                 items-center
                 block
@@ -60,7 +63,7 @@ const lists = reactive([
                 rounded-sm
                 hover:text-white hover:bg-blue-400">
         <span>{{ list.name }}</span>
-        </router-link>
+      </router-link>
     </li>
   </ul>
 </template>
