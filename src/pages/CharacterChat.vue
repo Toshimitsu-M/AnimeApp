@@ -19,13 +19,15 @@
 
 <script setup>
 import { ref } from 'vue';
+import axios from 'axios'; 
 
+const baseUrl = import.meta.env.VITE_API_BASE_URL;
 const input = ref('');
 const messages = ref([
-  { sender: 'Satoru', text: 'よぉ、今日も最強なオレが来てやったぞ。何でも聞いていいぜ？' }
+  { sender: 'Satoru', text: 'いいよ〜。なんでも聞いて♪ ' }
 ]);
 
-const sendMessage = async () => {
+const sendMessage =  async () => {
   if (!input.value.trim()) return;
   messages.value.push({ sender: 'You', text: input.value });
 
@@ -33,14 +35,21 @@ const sendMessage = async () => {
   input.value = '';
 
   try {
-    const res = await fetch('/api/chat', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ message: userInput })
-    });
-    const data = await res.json();
-    messages.value.push({ sender: 'Satoru', text: data.reply });
+    console.log('送信するよ ' + userInput + ' ' + baseUrl);
+    console.log(`${baseUrl}/chat`); // URLの文字列に ; が入ってないか確認
+    // axios
+    //   .post<string>(`${baseUrl}/chat`, { message: userInput })
+    //   .then((response) => {
+    //     console.log(response.data)
+    //     messages.value.push({ sender: 'Satoru', text: response.data });
+    //   })
+
+    const response = await axios.post(`${baseUrl}/chat/chat`, { message: userInput });
+
+    console.log('返ってきたよ', response.data);
+    messages.value.push({ sender: 'Satoru', text: response.data });
   } catch (err) {
+    console.error('通信エラー:', err);
     messages.value.push({ sender: 'Satoru', text: 'うわ、ごめん！ちょっとミスったかも…もう一回お願い！' });
   }
 };
@@ -49,3 +58,4 @@ const sendMessage = async () => {
 <style scoped>
 /* 必要に応じてスタイル追加 */
 </style>
+

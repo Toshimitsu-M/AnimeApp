@@ -19,7 +19,8 @@
       <!-- 声優画像 -->
       <img
         :src="character?.voiceActorsImage"
-        class="w-20 h-20 object-cover rounded-full shadow-md mt-2"
+        class="w-20 h-20 object-cover rounded-full shadow-md mt-2 cursor-pointer"
+        @click="searchVoiceActor"
       />
 
       <!-- お気に入りボタン -->
@@ -189,7 +190,7 @@ const addComment = async () => {
           ? (character.value.id as string)
           : (character.value?.name as string), // Anilist ID
         userId: 'hoge', // ユーザーID
-        comment: comment.value // コメント内容
+        commentText: comment.value // コメント内容
       })
 
       // コメントリストの内容をログに表示
@@ -342,7 +343,7 @@ const fetchCommentSave = (id: number, text: string) => {
       ? (character.value.id as string)
       : (character.value?.name as string),
     userId: 'hoge',
-    comment: text
+    commentText: text
   }
   try {
     axios
@@ -373,4 +374,15 @@ onMounted(async () => {
   await fetchCommentList() // fetchCommentListの非同期処理が完了するまで待機
 })
 
+// Wikipedia検索
+const keyword = ref('');
+
+const searchVoiceActor = () => {
+
+  const name = character.value?.voiceActors ?? '';
+
+  const encoded = encodeURIComponent(name);
+  const url = `https://ja.wikipedia.org/wiki/${encoded}`;
+  // window.open(url, '_blank');
+};
 </script>

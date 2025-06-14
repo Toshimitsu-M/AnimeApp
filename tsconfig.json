@@ -14,7 +14,11 @@
     "esModuleInterop": true,  // ESモジュールの互換性を有効にする
     "moduleResolution": "node",  // Node.jsのモジュール解決を使用
     "lib": ["ESNext", "dom"],
-    "module": "esnext"
+    "module": "esnext",
+    "types": ["node", "vite/client"]
   },
-  "types": ["./apollo"]
+  "types": ["./apollo", "vite/client"],
+  "include": [
+    "src/env.d.ts"
+  ]
 }
