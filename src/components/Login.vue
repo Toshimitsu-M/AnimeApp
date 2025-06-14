@@ -1,16 +1,18 @@
 <template>
   <div>
-  <!-- <div class="flex flex-col items-center justify-center min-h-screen"> -->
-    <button class="text-blue-500 text-sm cursor-pointer" @click="handleLogin">
-      Sign Up
-    </button>
+    <!-- ログイン前 -->
+    <button v-if="!user" class="text-blue-500 p-1 text-sm cursor-pointer border rounded" @click="handleLogin">サインイン</button>
 
-    <div v-if="user" class="mt-4 text-center">
-        <!-- 不滅のキュレル -->
-      <p>こんにちは、{{ user.displayName }} さん</p> 
-      <!-- アイコン -->
-      <img :src="user.photoURL" class="w-16 h-16 rounded-full mx-auto mt-2" />
-      <button class="mt-4 text-sm text-red-500" @click="handleLogout">ログアウト</button>
+    <!-- ログイン時 -->
+    <div class="relative inline-block">
+    <div v-if="user" class="text-center">
+      <img :src="user.photoURL" class="w-8 h-8 rounded-full mx-auto cursor-pointer" @click="toggleMenu"/>
+      <!-- ドロップダウンメニュー -->
+      <div v-if="showMenu" class="absolute right-0 top-full bg-white border rounded shadow-lg mt-2 w-48">
+        <div class="p-2 text-gray-700 cursor-pointer hover:bg-gray-100" @click="handleLogout">ログアウト</div>
+      </div>
+      <!-- <button class="mt-4 text-sm text-red-500 cursor-pointer" @click="handleLogout">ログアウト</button> -->
+    </div>
     </div>
   </div>
 </template>
@@ -21,21 +23,20 @@ import {
   getAuth,
   signInWithPopup,
   GoogleAuthProvider,
-  onAuthStateChanged,
   signOut
 } from 'firebase/auth'
 import { initializeApp } from 'firebase/app'
 // Firebaseの設定（Firebaseコンソールで取得）
 const firebaseConfig = {
-  apiKey: 'AIzaSyAFhk42_eWjwzhUsYDedREzSBDWTY0B3rY',
-  authDomain: "oauth-c859c.firebaseapp.com",
-  projectId: 'oauth-c859c'
+  apiKey: (import.meta as any).env.VITE_FIREBASE_API_KEY,
+  authDomain: (import.meta as any).env.VITE_FIREBASE_AUTH_DOMAIN,
+  projectId: (import.meta as any).env.VITE_FIREBASE_PROJECT_ID,
   // storageBucket: "your-app.appspot.com",
   // messagingSenderId: "xxxxxxx",
   // appId: "xxxxxxxxxxxxxxxxxxx"
 }
 
-// ✅ initializeApp を呼び出す（1度だけ）
+// initializeApp を呼び出す（1度だけ）
 const firebaseApp = initializeApp(firebaseConfig)
 
 const user = ref<any>(null)
@@ -43,8 +44,9 @@ const user = ref<any>(null)
 const provider = new GoogleAuthProvider()
 const auth = getAuth(firebaseApp)
 
+//ログイン処理
 const handleLogin = async () => {
-  try {   
+  try {
     signInWithPopup(auth, provider)
       .then((result) => {
         // This gives you a Google Access Token. You can use it to access the Google API.
@@ -70,19 +72,21 @@ const handleLogin = async () => {
   }
 }
 
+// ログアウト処理
 const handleLogout = async () => {
   signOut(auth)
     .then(() => {
-        user.value = null
-      // Sign-out successful.
+      user.value = null
     })
     .catch((error) => {
-        console.error('ログアウト失敗:', error)
-      // An error happened.
+      console.error('ログアウト失敗:', error)
     })
 }
 
-//   onAuthStateChanged(auth, (u) => {
-//     user.value = u;
-//   });
+
+// メニューのトグル
+const showMenu = ref(false)
+const toggleMenu = () => {
+  showMenu.value = !showMenu.value
+}
 </script>

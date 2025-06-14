@@ -1,4 +1,8 @@
 /// <reference types="vite/client" />
-interface ImportMeta {
-  readonly env: Record<string, string>;
-}
+// interface ImportMetaEnv {
+//   [key: string]: string | undefined;
+// }
+
+// interface ImportMeta {
+//   readonly env: ImportMetaEnv;
+// }

@@ -1,56 +1,44 @@
 <template>
-  <!-- <header class="w-full p-4 bg-white shadow flex justify-between items-center"></header> -->
   <div class="flex">
     <div class="h-6 font-bold text-lg text-blue-600">UI Labo。</div>
     <div>
-      <Bars3Icon
-        class="w-5 h-8 ml-1 text-gray-600 cursor-pointer"
-        @click="emit('update:show', !show)"
-      />
+      <Bars3Icon class="w-5 h-8 ml-1 text-gray-600 cursor-pointer" @click="emit('update:show', !show)" />
     </div>
 
     <div class="flex-grow"></div>
-    <div class="pr-4"><Login /></div>
-
     
-
-    <!-- //プルダウンの表示 -->
-    <!-- <div class="ml-auto"> -->
-      <!-- 3点リーダーアイコン -->
-      <EllipsisVerticalIcon
-        class="h-6 w-6 text-gray-600 cursor-pointer"
-        @click.stop="toggleMenu(1)"
-      />
-
-      <!-- ポップアップメニュー -->
-       
-      <!-- v-if="showMenu === c.id" -->
+<!-- スイッチ本体 -->
+    <button
+      @click="isDark = !isDark"
+      :class="[
+        'relative w-15 h-8 rounded-full transition-colors duration-300 focus:outline-none border border-gray-200',
+        isDark ? 'bg-gray-800' : 'bg-gray-100'
+      ]"
+    >
+      <!-- サム（アイコン付き） -->
       <div
-        v-if="true"
-        class="border"
+        :class="[
+          'absolute top-[3px] left-1 w-6 h-6 rounded-full shadow-md flex items-center justify-center  text-lg transition-all duration-300',
+          isDark
+            ? 'translate-x-7 bg-white text-gray-800'
+            : 'translate-x-0 bg-gray text-white-800'
+        ]"
       >
-      ボタン
-        <!-- <button
-          v-if="editingIndex !== c.id"
-          class="text-sm text-gray-700 hover:bg-gray-100"
-        >
-          編集
-        </button>
-        <button
-          v-if="editingIndex === c.id"
-          @click="editingIndex = null"
-          class="text-sm text-gray-700 hover:bg-gray-100"
-        >
-          キャンセル
-        </button> -->
+      <component :is="isDark ? MoonIcon : SunIcon" class="w-6 h-6" />
       </div>
-    <!-- </div> -->
+      
+    </button>
+
+    <div class="ml-5 pr-4">
+      <Login />
+    </div>
+
   </div>
 </template>
 
 <script setup lang="ts">
-import { onMounted, ref } from 'vue'
-import { Bars3Icon } from '@heroicons/vue/24/outline'
+import { onMounted, ref, watch } from 'vue'
+import { Bars3Icon, MoonIcon, SunIcon } from '@heroicons/vue/24/outline'
 import { defineProps, defineEmits } from 'vue'
 import Login from '../components/Login.vue'
 import { EllipsisVerticalIcon } from '@heroicons/vue/24/outline'
@@ -74,6 +62,15 @@ const closeMenu = (event: Event) => {
     showMenu.value = null
   }
 }
+
+
+// ダークモードの状態を管理
+const isDark = ref(false)
+
+watch(isDark, (val) => {
+    // @ts-ignore
+  document.documentElement.classList.toggle('dark', val)
+})
 </script>
 <style>
 .cursor-pointer {

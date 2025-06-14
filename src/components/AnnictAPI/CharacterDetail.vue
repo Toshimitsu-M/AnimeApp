@@ -144,7 +144,7 @@ const comment = ref('')
 const favorites = ref<string[]>([])
 const addIsComposing = ref(true)
 const editIsComposing = ref(false)
-const baseUrl = import.meta.env.VITE_API_BASE_URL;
+const baseUrl = (import.meta as any).env.VITE_API_BASE_URL;
 
 // キャラクター詳細情報の取得
 const store = useCharacterStore()
@@ -383,6 +383,8 @@ const searchVoiceActor = () => {
 
   const encoded = encodeURIComponent(name);
   const url = `https://ja.wikipedia.org/wiki/${encoded}`;
-  // window.open(url, '_blank');
+  // @ts-ignore
+  declare const window: any;
+  window.open(url, '_blank');
 };
 </script>
