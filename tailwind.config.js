@@ -1,5 +1,6 @@
 /** @type {import('tailwindcss').Config} */
 export default {
+    darkMode: 'class', // media or class
     content: [
       "./index.html",
       "./src/**/*.{vue,js,ts,jsx,tsx}"
@@ -8,6 +9,6 @@ export default {
       extend: {},
     },
     plugins: [],
-    darkMode: 'class', // Enable dark mode support
+    
   };
-  
+

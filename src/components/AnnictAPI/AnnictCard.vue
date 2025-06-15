@@ -3,7 +3,7 @@
     <span class="absolute top-[92px] left-[0px] bg-orange-700/80 text-white text-lg font-bold px-3 py-1 rounded-full">{{ number+1 }}</span>
     <img :src="image" alt="Card image" class="w-full" />
     <div class="p-4">
-      <p class="text-xs font-semibold text-gray-800 mt-4 text-center">{{ title }}</p>
+      <p class="text-xs font-semibold mt-4 text-gray-800 dark:text-gray-300 text-center">{{ title }}</p>
     </div>
   </router-link>
 </template>

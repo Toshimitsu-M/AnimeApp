@@ -45,7 +45,7 @@
           </button>
         </div>
         <!-- タブコンテンツ -->
-        <div class="p-6 text-lg">
+        <div class="p-6 text-lg ">
           <div v-if="selectedTab === 0"><CurrentAnime></CurrentAnime></div>
           <div v-if="selectedTab === 1"><NextAnime></NextAnime></div>
           <div v-if="selectedTab === 2"><SeasonalAnime></SeasonalAnime></div>

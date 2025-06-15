@@ -1,12 +1,6 @@
 <template>
-  <div class="p-4">
-    
-    <div class="flex items-center justify-between font-bold text-lg text-blue-600">
-      
-    </div>
-    <div class="mt-10">
+  <div class="p-4 mt-10">
       <List />
-    </div>
   </div>
 </template>
 

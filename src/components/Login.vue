@@ -1,7 +1,7 @@
 <template>
   <div>
     <!-- ログイン前 -->
-    <button v-if="!user" class="text-blue-500 p-1 text-sm cursor-pointer border rounded" @click="handleLogin">サインイン</button>
+    <button v-if="!user" class="p-1 text-sm cursor-pointer border rounded" @click="handleLogin">サインイン</button>
 
     <!-- ログイン時 -->
     <div class="relative inline-block">
@@ -9,9 +9,8 @@
       <img :src="user.photoURL" class="w-8 h-8 rounded-full mx-auto cursor-pointer" @click="toggleMenu"/>
       <!-- ドロップダウンメニュー -->
       <div v-if="showMenu" class="absolute right-0 top-full bg-white border rounded shadow-lg mt-2 w-48">
-        <div class="p-2 text-gray-700 cursor-pointer hover:bg-gray-100" @click="handleLogout">ログアウト</div>
+        <div class="p-2 cursor-pointer hover:bg-gray-100" @click="handleLogout">ログアウト</div>
       </div>
-      <!-- <button class="mt-4 text-sm text-red-500 cursor-pointer" @click="handleLogout">ログアウト</button> -->
     </div>
     </div>
   </div>

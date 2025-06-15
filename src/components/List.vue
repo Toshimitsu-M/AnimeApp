@@ -1,3 +1,19 @@
+<template>
+  <ul class="">
+    <li class="mb-1" v-for="list in lists" :key="list.name">
+      <router-link :to="list.link" class="
+                flex
+                items-center
+                block
+                p-2
+                rounded-sm
+                hover:text-white hover:bg-blue-400">
+        <span class="text-orange-600 dark:text-white">{{ list.name }}</span>
+      </router-link>
+    </li>
+  </ul>
+</template>
+
 <script setup lang="ts">
 import { reactive } from 'vue';
 import {
@@ -52,18 +68,3 @@ const lists = reactive([
 
 
 </script>
-<template>
-  <ul class="text-gray-700">
-    <li class="mb-1" v-for="list in lists" :key="list.name">
-      <router-link :to="list.link" class="
-                flex
-                items-center
-                block
-                p-2
-                rounded-sm
-                hover:text-white hover:bg-blue-400">
-        <span>{{ list.name }}</span>
-      </router-link>
-    </li>
-  </ul>
-</template>

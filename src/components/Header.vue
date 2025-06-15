@@ -1,27 +1,27 @@
 <template>
   <div class="flex">
-    <div class="h-6 font-bold text-lg text-blue-600">UI Labo。</div>
+    <div class="h-6 font-bold text-lg">UI Labo。</div>
     <div>
       <Bars3Icon class="w-5 h-8 ml-1 text-gray-600 cursor-pointer" @click="emit('update:show', !show)" />
     </div>
 
     <div class="flex-grow"></div>
     
-<!-- スイッチ本体 -->
+    <!-- スイッチ本体 -->
     <button
       @click="isDark = !isDark"
       :class="[
-        'relative w-15 h-8 rounded-full transition-colors duration-300 focus:outline-none border border-gray-200',
+        'relative w-15 h-8 rounded-full transition-colors duration-300 focus:outline-none border border-gray-200 cursor-pointer ',
         isDark ? 'bg-gray-800' : 'bg-gray-100'
       ]"
     >
       <!-- サム（アイコン付き） -->
       <div
         :class="[
-          'absolute top-[3px] left-1 w-6 h-6 rounded-full shadow-md flex items-center justify-center  text-lg transition-all duration-300',
+          'absolute top-[3px] left-1 w-6 h-6 rounded-full shadow-md flex items-center justify-center text-lg transition-all duration-300',
           isDark
             ? 'translate-x-7 bg-white text-gray-800'
-            : 'translate-x-0 bg-gray text-white-800'
+            : 'translate-x-0 bg-gray-300 text-white-800'
         ]"
       >
       <component :is="isDark ? MoonIcon : SunIcon" class="w-6 h-6" />
@@ -67,10 +67,23 @@ const closeMenu = (event: Event) => {
 // ダークモードの状態を管理
 const isDark = ref(false)
 
-watch(isDark, (val) => {
-    // @ts-ignore
-  document.documentElement.classList.toggle('dark', val)
-})
+const updateHtmlClass = (isDark: boolean) => {
+  // @ts-ignore
+  const html = document.querySelector('html')
+  console.log('updateHtmlClass called with isDark:', isDark)
+  
+  if (html) {
+    html.classList.remove('dark')
+    if (isDark) {
+      html.classList.add('dark')
+    }
+    console.log('dark class applied:', isDark)
+  } else {
+    console.warn('html element not found')
+  }
+}
+onMounted(() => updateHtmlClass(isDark.value))
+watch(isDark, updateHtmlClass)
 </script>
 <style>
 .cursor-pointer {
