@@ -10,7 +10,8 @@
     "paths": {
       "@/*": ["./src/*"]
     },
-    "types": ["node", "vite/client"]
+    "types": ["node", "vite/client"],
+    "lib": ["esnext", "dom"]
   },
   "types": ["vite/client"]
 }

@@ -1,14 +1,13 @@
 <template>
   <ul class="">
-    <li class="mb-1" v-for="list in lists" :key="list.name">
+    <li class="mb-1 hover:bg-gray-100/10 dark:hover:bg-orange-100/10" v-for="list in lists" :key="list.name">
       <router-link :to="list.link" class="
                 flex
                 items-center
                 block
                 p-2
-                rounded-sm
-                hover:text-white hover:bg-blue-400">
-        <span class="text-orange-600 dark:text-white">{{ list.name }}</span>
+                rounded-sm">
+        <span class="text-orange-600 dark:text-white/50 ">{{ list.name }}</span>
       </router-link>
     </li>
   </ul>

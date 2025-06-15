@@ -1,16 +1,18 @@
 <template>
+  
   <router-link 
     :to="router.link" 
     class="relative w-full max-w-2xl flex items-center rounded-3xl overflow-hidden border border-gray-300 shadow-lg m-4" 
     @click="handleClick"
   >
+  
     <!-- 画像を左側に配置 -->
     <img :src="image" alt="Card image" class="w-1/3 h-auto object-cover" />
     
     <!-- テキスト部分 -->
-    <div class="p-6 flex-1">
-      <p class="text-sm font-semibold text-gray-800">{{ name }}</p>
-      <p class="text-sm font-semibold text-gray-800">CV: {{ voiceActors }}</p>
+    <div class="p-6 flex-1 text-gray-800 dark:text-white">
+      <p class="text-sm font-semibold">{{ name }}</p>
+      <p class="text-sm font-semibold ">CV: {{ voiceActors }}</p>
     </div>
   </router-link>
 </template>

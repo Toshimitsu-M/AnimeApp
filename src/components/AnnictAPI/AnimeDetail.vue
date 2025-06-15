@@ -1,6 +1,6 @@
 <template>
-  <div class="p-4">
-    <ArrowLeftIcon @click="router.back()" class="w-10 h-10 text-black p-2 mb-4 rounded-lg cursor-pointer"></ArrowLeftIcon>
+  <div class="p-4 text-black dark:text-white">
+    <ArrowLeftIcon @click="router.back()" class="w-10 h-10 p-2 mb-4 rounded-lg cursor-pointer"></ArrowLeftIcon>
     <img :src="image?.facebookOgImageUrl || 'no_image.jpg'" alt="Card image" class="w-3/5 mx-auto" />
     <br>
     <div class="text-2xl font-bold">{{ title }}</div>
