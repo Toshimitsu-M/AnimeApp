@@ -84,6 +84,7 @@ import {
 } from '@heroicons/vue/24/outline'
 import { fetchCharacterComments, saveCharacterComment, deleteCharacterComment, type CharacterComment, createCharacterComment } from '../../api/characterComment'
 import { useAuthStore } from '../../store/auth'
+import { get } from 'http'
 
 const auth = useAuthStore()
 const router = useRouter()
@@ -294,6 +295,15 @@ onMounted(async () => {
     characterCommentList.value = comments
     console.log('コメントリスト：', characterCommentList.value)
   }
+
+  // ゲストユーザのコメントがある場合はセッションストレージから取得
+  const guestComments = sessionStorage.getItem('characterCommentList')
+  if (guestComments) {
+    const parsedComments = JSON.parse(guestComments) as CharacterComment[];
+    const filteredComments = parsedComments.filter(comment => comment.characterId === getCharacterId());
+    characterCommentList.value.push(...filteredComments);
+  }
+  console.log('ゲストユーザのコメントリスト：', characterCommentList.value)
 })
 
 // Wikipedia検索
