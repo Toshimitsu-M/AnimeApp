@@ -18,8 +18,8 @@
     </div>
 
     <!-- メインコンテンツ -->
-    <div class="flex-1 pt-10 bg-white dark:bg-gray-700 h-screen overflow-auto transition-all duration-300" 
-    :class="{ 'pl-64': show, 'pl-0': !show }"
+    <div class="flex-1 pt-12 bg-white dark:bg-gray-700 h-screen overflow-auto transition-all duration-300" 
+    :class="{ 'pl-40': show, 'pl-0': !show }"
     >
       <div>
         <slot />
