@@ -301,7 +301,7 @@ onMounted(async () => {
   if (guestComments) {
     const parsedComments = JSON.parse(guestComments) as CharacterComment[];
     const filteredComments = parsedComments.filter(comment => comment.characterId === getCharacterId());
-    characterCommentList.value.push(...filteredComments);
+    characterCommentList.value.push(...parsedComments);
   }
   console.log('ゲストユーザのコメントリスト：', characterCommentList.value)
 })

@@ -5,9 +5,9 @@ import {
     GoogleAuthProvider,
     signInWithPopup,
     signOut,
-    onAuthStateChanged,
-    User
+    onAuthStateChanged
 } from 'firebase/auth'
+import type { User } from 'firebase/auth'
 import { initializeApp } from 'firebase/app'
 
 // Firebaseの設定（Firebaseコンソールで取得）
