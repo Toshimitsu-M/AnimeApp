@@ -126,6 +126,7 @@ const getCharacterId = () => {
 const addHandleEnter = async () => {
   if (addIsComposing.value) return // 入力中は処理を中断
   submitComment(0) // IDは0で新規追加を示す
+  comment.value = '';
 }
 
 //コメント保存のハンドラー
